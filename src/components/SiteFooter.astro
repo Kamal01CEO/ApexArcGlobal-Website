@@ -1,0 +1,47 @@
+---
+import { navigation, site } from "../data/site";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand-mark footer-mark" href="/" aria-label={`${site.name} home`}>
+        <span class="brand-icon" aria-hidden="true">AA</span>
+        <span class="brand-text">
+          <strong>{site.name}</strong>
+          <span>{site.tagline}</span>
+        </span>
+      </a>
+      <p>
+        Product-minded automation systems, AI agents, and custom SaaS builds for startups that
+        need sharper momentum.
+      </p>
+    </div>
+
+    <div class="footer-column">
+      <h2>Explore</h2>
+      <div class="footer-links">
+        {
+          navigation.map((item) => (
+            <a href={item.href}>{item.label}</a>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="footer-column">
+      <h2>Contact</h2>
+      <div class="footer-links">
+        <a href={site.emailHref}>{site.email}</a>
+        <span>{site.domain}</span>
+        <span>{site.location}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>© {year} {site.name}. Built for fast-moving teams.</p>
+  </div>
+</footer>

@@ -1,0 +1,87 @@
+---
+import ContactBand from "../components/ContactBand.astro";
+import ProcessTimeline from "../components/ProcessTimeline.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import { principles, processArtifacts, processSteps } from "../data/site";
+---
+
+<MainLayout
+  title="Process"
+  description="ApexArc Global follows a clear process: discovery, workflow mapping, system design, build, launch, and iteration."
+>
+  <section class="section page-hero">
+    <div class="container page-hero-grid">
+      <div data-reveal>
+        <p class="eyebrow">Process</p>
+        <h1>A build process that keeps momentum without losing clarity.</h1>
+        <p class="page-intro">
+          ApexArc Global starts with business logic, then turns that understanding into a practical
+          roadmap for automation, AI systems, or custom product development.
+        </p>
+      </div>
+      <div class="glass-card side-note" data-reveal>
+        <p class="mini-label">The goal</p>
+        <p>
+          Remove ambiguity early so the build phase can stay focused on useful decisions instead of
+          expensive rework.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Project Flow"
+        title="Four phases from workflow understanding to launch."
+        intro="The delivery path is simple by design: understand the pressure point, shape the system, build with discipline, then refine where reality exposes new detail."
+      />
+      <ProcessTimeline steps={processSteps} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Artifacts"
+        title="What you should expect along the way."
+        intro="ApexArc keeps the process tangible with clear outputs that help the work stay aligned."
+      />
+      <div class="card-grid card-grid-three">
+        {
+          processArtifacts.map((artifact) => (
+            <article class="glass-card info-card" data-reveal>
+              <h3>{artifact.title}</h3>
+              <p>{artifact.description}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Working Principles"
+        title="The operating rules behind the build."
+        intro="These principles keep the work grounded in usable systems rather than impressive-looking complexity."
+      />
+      <div class="principles-grid">
+        {
+          principles.map((principle) => (
+            <article class="glass-card principle-card" data-reveal>
+              <h3>{principle}</h3>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <ContactBand
+    title="Want to talk through a workflow before committing to a large build?"
+    text="That is usually the right place to start. Share the process, the bottleneck, or the product idea and ApexArc can help define the best first move."
+  />
+</MainLayout>

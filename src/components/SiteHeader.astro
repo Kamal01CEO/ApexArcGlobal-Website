@@ -1,0 +1,81 @@
+---
+import { navigation, site } from "../data/site";
+
+type Props = {
+  pathname: string;
+};
+
+const { pathname } = Astro.props;
+
+const isActive = (href: string) => {
+  if (href === "/") {
+    return pathname === "/";
+  }
+
+  return pathname.startsWith(href);
+};
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand-mark" href="/" aria-label={`${site.name} home`}>
+      <span class="brand-icon" aria-hidden="true">AA</span>
+      <span class="brand-text">
+        <strong>{site.name}</strong>
+        <span>{site.tagline}</span>
+      </span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      {
+        navigation.map((item) => (
+          <a
+            class:list={["nav-link", { active: isActive(item.href) }]}
+            href={item.href}
+            aria-current={isActive(item.href) ? "page" : undefined}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="header-actions">
+      <a class="button button-secondary header-cta" href={site.emailHref}>
+        Start A Project
+      </a>
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-navigation"
+        data-nav-toggle
+      >
+        <span class="sr-only">Toggle navigation</span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-nav-shell" id="mobile-navigation" data-mobile-panel hidden>
+    <div class="container mobile-nav">
+      <nav aria-label="Mobile navigation">
+        {
+          navigation.map((item) => (
+            <a
+              class:list={["mobile-nav-link", { active: isActive(item.href) }]}
+              href={item.href}
+              aria-current={isActive(item.href) ? "page" : undefined}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+      <a class="button button-primary mobile-nav-cta" href={site.emailHref}>
+        Email ApexArc
+      </a>
+    </div>
+  </div>
+</header>

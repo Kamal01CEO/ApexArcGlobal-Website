@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title>ApexArc Global</title>
+  <defs>
+    <linearGradient id="g" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#c4f7ff" />
+      <stop offset="55%" stop-color="#74dcff" />
+      <stop offset="100%" stop-color="#489fff" />
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="32" fill="#09111a" />
+  <rect x="13" y="13" width="102" height="102" rx="26" fill="none" stroke="#ffffff" stroke-opacity="0.12" />
+  <path
+    d="M33 86 58 35h13l24 51H81l-4-10H50l-4 10Zm22-21h17l-8.5-19.4Z"
+    fill="url(#g)"
+  />
+</svg>

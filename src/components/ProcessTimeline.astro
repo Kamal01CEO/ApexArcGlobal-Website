@@ -1,0 +1,26 @@
+---
+import type { ProcessStep } from "../data/site";
+
+type Props = {
+  steps: ProcessStep[];
+};
+
+const { steps } = Astro.props;
+---
+
+<div class="timeline">
+  {
+    steps.map((step) => (
+      <article class="timeline-step glass-card" data-reveal>
+        <div class="timeline-kicker">
+          <span>{step.id}</span>
+          <h3>{step.title}</h3>
+        </div>
+        <p>{step.description}</p>
+        <ul class="detail-list">
+          {step.points.map((point) => <li>{point}</li>)}
+        </ul>
+      </article>
+    ))
+  }
+</div>

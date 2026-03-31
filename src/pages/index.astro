@@ -1,0 +1,140 @@
+---
+import ContactBand from "../components/ContactBand.astro";
+import FaqList from "../components/FaqList.astro";
+import ProcessTimeline from "../components/ProcessTimeline.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import { capabilityCards, faqs, hero, outcomes, processSteps, site } from "../data/site";
+---
+
+<MainLayout title="Automation Systems, AI Agents, And Custom SaaS" description={site.description}>
+  <section class="section hero-section">
+    <div class="container hero-grid">
+      <div class="hero-copy" data-reveal>
+        <p class="eyebrow">{hero.eyebrow}</p>
+        <h1>{hero.title}</h1>
+        <p class="hero-intro">{hero.intro}</p>
+        <div class="button-row">
+          <a class="button button-primary" href={hero.primaryCta.href}>{hero.primaryCta.label}</a>
+          <a class="button button-secondary" href={hero.secondaryCta.href}>{hero.secondaryCta.label}</a>
+        </div>
+        <ul class="hero-points">
+          {hero.highlights.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <div class="hero-visual" data-reveal>
+        <div class="spline-stage glass-card">
+          <div class="spline-backdrop-glow spline-backdrop-a"></div>
+          <div class="spline-backdrop-glow spline-backdrop-b"></div>
+
+          <div class="hero-brand-watermark" aria-hidden="true">ApexArc Global</div>
+
+          <spline-viewer
+            class="hero-spline-viewer"
+            loading="eager"
+            url="https://prod.spline.design/zWe6iJkNdAhpdlGn/scene.splinecode"
+          ></spline-viewer>
+
+          <div class="spline-bottom-mask" aria-hidden="true">
+            <span>ApexArc Global</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="What ApexArc Delivers"
+        title="Three ways we create leverage for startup teams."
+        intro="The work is organized around outcomes, so visitors can quickly understand what gets better after ApexArc is involved."
+      />
+      <div class="outcome-grid">
+        {
+          outcomes.map((outcome) => (
+            <article class="glass-card outcome-card" data-reveal>
+              <h3>{outcome.title}</h3>
+              <p>{outcome.intro}</p>
+              <ul class="detail-list">
+                {outcome.items.map((item) => <li>{item}</li>)}
+              </ul>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Capabilities"
+        title="Built for practical automation, customer AI, and custom product delivery."
+        intro="These are the main systems ApexArc can design, automate, and launch for early-stage and growing teams."
+      />
+      <div class="card-grid card-grid-three">
+        {
+          capabilityCards.map((card) => (
+            <ServiceCard title={card.title} description={card.description} />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="How Projects Move"
+        title="A process built to reduce ambiguity before it becomes expensive."
+        intro="Every engagement is grounded in workflow logic first, then shaped into a build path that can actually ship."
+      />
+      <ProcessTimeline steps={processSteps} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="split-panel glass-card" data-reveal>
+        <div>
+          <p class="eyebrow">Custom SaaS On Demand</p>
+          <h2>Need a product that does not exist yet?</h2>
+          <p>
+            ApexArc Global builds custom SaaS products, internal platforms, and AI-assisted
+            software for teams that need more than automation glued on top of old workflows.
+          </p>
+        </div>
+        <div class="stack-list">
+          <div class="mini-panel">
+            <strong>MVP launches</strong>
+            <p>Focused first versions built to validate an idea or replace a painful manual process.</p>
+          </div>
+          <div class="mini-panel">
+            <strong>AI-first product features</strong>
+            <p>Agents, copilots, and workflow intelligence embedded into the experience from day one.</p>
+          </div>
+          <div class="mini-panel">
+            <strong>Internal operating systems</strong>
+            <p>Business tools that become the center of how your team actually runs work.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="FAQ"
+        title="Questions startup teams usually ask first."
+        intro="The short version of who ApexArc works with, what it builds, and how engagements typically begin."
+      />
+      <FaqList items={faqs} />
+    </div>
+  </section>
+
+  <ContactBand />
+</MainLayout>

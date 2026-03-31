@@ -1,0 +1,93 @@
+---
+import ContactBand from "../components/ContactBand.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import { capabilityCards, serviceTracks, site } from "../data/site";
+---
+
+<MainLayout
+  title="Services"
+  description="ApexArc Global services include agentic workflows, AI agents, voice systems, custom SaaS, internal tools, and CRM automation."
+>
+  <section class="section page-hero">
+    <div class="container page-hero-grid">
+      <div data-reveal>
+        <p class="eyebrow">Services</p>
+        <h1>Systems, software, and AI built around real workflow pressure.</h1>
+        <p class="page-intro">
+          ApexArc Global helps startups and growing businesses automate internal operations,
+          improve customer interaction, and build custom software that fits the way the business
+          already runs.
+        </p>
+      </div>
+      <div class="glass-card side-note" data-reveal>
+        <p class="mini-label">Best for teams that need</p>
+        <ul class="detail-list">
+          <li>Less manual coordination and more operational reliability</li>
+          <li>Customer conversations handled faster through AI systems</li>
+          <li>Custom software instead of generic workarounds</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Outcome Tracks"
+        title="Choose the business pressure point that matters most right now."
+        intro="Each track solves a different kind of bottleneck, but they can also be combined when the workflow crosses operations, customers, and product."
+      />
+      <div class="card-grid">
+        {
+          serviceTracks.map((track) => (
+            <ServiceCard title={track.title} description={track.summary} items={track.deliverables} />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Ideal Fit"
+        title="Where ApexArc adds the most value."
+        intro="The company is strongest when the challenge is bigger than one tool and needs both clear thinking and practical execution."
+      />
+      <div class="ideal-fit-grid">
+        {
+          serviceTracks.map((track) => (
+            <article class="glass-card fit-card" data-reveal>
+              <h3>{track.title}</h3>
+              <p>{track.idealFor}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Capability Menu"
+        title="The specific systems ApexArc can design and deliver."
+        intro="Use this as a quick overview when you already know the type of build or automation you need."
+      />
+      <div class="card-grid card-grid-three">
+        {
+          capabilityCards.map((card) => (
+            <ServiceCard title={card.title} description={card.description} />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <ContactBand
+    title="Have a workflow, support flow, or SaaS concept that needs structure?"
+    text="Share the business context and the friction point. ApexArc can help shape the right system, whether that means automation, customer AI, or a full custom build."
+  />
+</MainLayout>

@@ -1,0 +1,72 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import { contactGuidance, site } from "../data/site";
+---
+
+<MainLayout title="Contact" description="Contact ApexArc Global to discuss agentic workflows, AI agents, custom SaaS, internal tools, or CRM automation.">
+  <section class="section page-hero">
+    <div class="container page-hero-grid">
+      <div data-reveal>
+        <p class="eyebrow">Contact</p>
+        <h1>Start with the workflow, the product idea, or the bottleneck.</h1>
+        <p class="page-intro">
+          Email is the launch path for v1. If you already know what needs to be built or automated,
+          send the details directly and ApexArc can shape the next step from there.
+        </p>
+      </div>
+      <div class="glass-card side-note" data-reveal>
+        <p class="mini-label">Primary contact</p>
+        <a class="contact-email" href={site.emailHref}>{site.email}</a>
+        <p>{site.location}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contact-grid">
+      <article class="glass-card contact-card" data-reveal>
+        <p class="eyebrow">Email ApexArc</p>
+        <h2>Direct, simple, and fast.</h2>
+        <p>
+          Use the email link below to start the conversation. A short note with the right context is
+          enough to begin.
+        </p>
+        <div class="button-row">
+          <a class="button button-primary" href={site.emailHref}>Open Email</a>
+          <button class="button button-ghost" type="button" data-copy-email={site.email}>
+            Copy Email Address
+          </button>
+        </div>
+      </article>
+
+      <article class="glass-card contact-card" data-reveal>
+        <p class="eyebrow">What To Include</p>
+        <h2>The details that help most.</h2>
+        <ul class="detail-list">
+          {contactGuidance.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="split-panel glass-card" data-reveal>
+        <div>
+          <p class="eyebrow">Common Project Types</p>
+          <h2>Reach out if you need help with any of these.</h2>
+        </div>
+        <div class="tag-grid">
+          <span>Agentic workflows</span>
+          <span>AI agents</span>
+          <span>Chatbots</span>
+          <span>Voice agents</span>
+          <span>CRM automation</span>
+          <span>Internal business tools</span>
+          <span>Custom SaaS MVPs</span>
+          <span>AI product features</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

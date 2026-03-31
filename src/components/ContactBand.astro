@@ -1,0 +1,29 @@
+---
+import { site } from "../data/site";
+
+type Props = {
+  title?: string;
+  text?: string;
+};
+
+const {
+  title = "Need a sharper system, a custom product, or an AI workflow that actually fits your business?",
+  text = "Start with a direct conversation. Share the workflow, product idea, or customer interaction you want to improve, and ApexArc will help frame the right first move."
+} = Astro.props;
+---
+
+<section class="section">
+  <div class="container">
+    <div class="contact-band glass-card" data-reveal>
+      <div>
+        <p class="eyebrow">Start The Conversation</p>
+        <h2>{title}</h2>
+        <p>{text}</p>
+      </div>
+      <div class="contact-band-actions">
+        <a class="button button-primary" href={site.emailHref}>Email {site.name}</a>
+        <a class="button button-ghost" href="/contact">Contact Details</a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,85 @@
+---
+import ContactBand from "../components/ContactBand.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import { aboutStory, principles } from "../data/site";
+---
+
+<MainLayout title="About" description="Learn how ApexArc Global approaches automation, AI systems, and custom product delivery.">
+  <section class="section page-hero">
+    <div class="container page-hero-grid">
+      <div data-reveal>
+        <p class="eyebrow">{aboutStory.eyebrow}</p>
+        <h1>{aboutStory.title}</h1>
+        <p class="page-intro">{aboutStory.intro}</p>
+      </div>
+      <div class="glass-card side-note" data-reveal>
+        <p class="mini-label">Positioning</p>
+        <p>
+          ApexArc Global is an automation and product partner for startups that need useful systems,
+          better customer interaction, and software built around the way they actually operate.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container story-grid">
+      {
+        aboutStory.body.map((paragraph) => (
+          <article class="glass-card story-card" data-reveal>
+            <p>{paragraph}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Who ApexArc Helps"
+        title="Built for founders, operators, and small teams under real delivery pressure."
+        intro="The strongest fit is usually a business that knows the current workflow is too manual, too fragmented, or too limited by generic tools."
+      />
+      <div class="card-grid card-grid-three">
+        <article class="glass-card info-card" data-reveal>
+          <h3>Startup founders</h3>
+          <p>Teams validating new products, launching MVPs, or shaping AI into the core offer.</p>
+        </article>
+        <article class="glass-card info-card" data-reveal>
+          <h3>Operators and revenue teams</h3>
+          <p>Businesses that need cleaner handoffs, better CRM logic, and more reliable workflow movement.</p>
+        </article>
+        <article class="glass-card info-card" data-reveal>
+          <h3>Service businesses with growth pressure</h3>
+          <p>Teams looking to add chatbots, voice agents, and internal systems without slowing down daily work.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Principles"
+        title="How the work stays grounded."
+        intro="These principles shape both the client experience and the systems ApexArc chooses to build."
+      />
+      <div class="principles-grid">
+        {
+          principles.map((principle) => (
+            <article class="glass-card principle-card" data-reveal>
+              <h3>{principle}</h3>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <ContactBand
+    title="Looking for a partner that can think through the system and build it?"
+    text="ApexArc is designed for that overlap between product thinking, automation strategy, and practical delivery."
+  />
+</MainLayout>

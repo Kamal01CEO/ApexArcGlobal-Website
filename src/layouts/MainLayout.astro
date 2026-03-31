@@ -1,0 +1,58 @@
+---
+import "../styles/global.css";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import { site } from "../data/site";
+
+type Props = {
+  title?: string;
+  description?: string;
+};
+
+const { title, description = site.description } = Astro.props;
+const pathname = Astro.url.pathname;
+const pageTitle = title ? `${title} | ${site.name}` : `${site.name} | ${site.tagline}`;
+const canonicalUrl = new URL(pathname, Astro.site ?? "https://apexarcglobal.com");
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#070b12" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      type="module"
+      src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"
+    ></script>
+    <title>{pageTitle}</title>
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content={site.name} />
+  </head>
+  <body>
+    <div class="site-shell">
+      <div class="page-ambient ambient-a"></div>
+      <div class="page-ambient ambient-b"></div>
+      <div class="page-grid"></div>
+      <SiteHeader pathname={pathname} />
+      <main class="site-main">
+        <slot />
+      </main>
+      <SiteFooter />
+    </div>
+    <script type="module" src="/scripts/site.js"></script>
+  </body>
+</html>

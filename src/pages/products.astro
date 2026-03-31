@@ -1,0 +1,86 @@
+---
+import ContactBand from "../components/ContactBand.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import { productModes } from "../data/site";
+---
+
+<MainLayout
+  title="Products"
+  description="ApexArc Global builds custom SaaS products, internal platforms, and AI-first software on demand."
+>
+  <section class="section page-hero">
+    <div class="container page-hero-grid">
+      <div data-reveal>
+        <p class="eyebrow">Products</p>
+        <h1>Custom SaaS products built on demand, not boxed templates.</h1>
+        <p class="page-intro">
+          The products focus at ApexArc Global is custom build work. Instead of showing a fake
+          catalog, this page explains the kinds of software the team can shape, prototype, and
+          launch around your business model.
+        </p>
+      </div>
+      <div class="glass-card side-note" data-reveal>
+        <p class="mini-label">Product-minded work includes</p>
+        <ul class="detail-list">
+          <li>New SaaS concepts for startups</li>
+          <li>AI-assisted product features and copilots</li>
+          <li>Internal software replacing manual operator workflows</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Build Modes"
+        title="Different ways ApexArc can support a product build."
+        intro="The exact path depends on whether you are validating an idea, replacing a process, or turning internal operations into software."
+      />
+      <div class="card-grid">
+        {
+          productModes.map((mode) => (
+            <ServiceCard title={mode.title} description={mode.description} />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="split-panel glass-card" data-reveal>
+        <div>
+          <p class="eyebrow">What Gets Built</p>
+          <h2>Software shaped around your workflow, team, and customer experience.</h2>
+          <p>
+            ApexArc approaches product work like a startup partner: clarify the business problem,
+            design the flow, build the right first version, and keep the system extensible for what
+            comes next.
+          </p>
+        </div>
+        <div class="stack-list">
+          <div class="mini-panel">
+            <strong>Customer products</strong>
+            <p>Founding-stage or growth-stage SaaS experiences that need a clear first release.</p>
+          </div>
+          <div class="mini-panel">
+            <strong>Operator software</strong>
+            <p>Internal products for teams managing delivery, support, sales, or back-office flow.</p>
+          </div>
+          <div class="mini-panel">
+            <strong>AI-enhanced platforms</strong>
+            <p>Products where agents, copilots, or workflow intelligence are part of the core offer.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ContactBand
+    title="Need a SaaS MVP, internal platform, or AI product direction?"
+    text="A direct email is the fastest way to start. Share what needs to be built, who it is for, and where the current workflow is breaking."
+  />
+</MainLayout>
