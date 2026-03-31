@@ -1,0 +1,160 @@
+---
+import { chatbotLeadFormName, chatbotStarterPrompts, chatbotUi } from "../lib/chatbot-content.mjs";
+import { site } from "../data/site";
+---
+
+<div
+  class="chatbot-shell"
+  data-chatbot
+  data-chat-endpoint="/.netlify/functions/chat"
+  data-lead-form-name={chatbotLeadFormName}
+  data-contact-href={site.emailHref}
+>
+  <section class="chatbot-teaser glass-card" data-chat-teaser>
+    <p class="eyebrow">{chatbotUi.teaserEyebrow}</p>
+    <h2>{chatbotUi.teaserTitle}</h2>
+    <p>{chatbotUi.teaserIntro}</p>
+    <div class="chatbot-teaser-prompts">
+      {
+        chatbotStarterPrompts.map((prompt) => (
+          <button class="prompt-chip" type="button" data-chat-prompt={prompt}>
+            {prompt}
+          </button>
+        ))
+      }
+    </div>
+    <div class="button-row">
+      <button class="button button-primary" type="button" data-chat-open>
+        {chatbotUi.mobileOpenLabel}
+      </button>
+      <a class="button button-secondary" href={site.emailHref}>
+        Email ApexArc
+      </a>
+    </div>
+  </section>
+
+  <section class="chatbot-panel glass-card" data-chat-panel aria-live="polite">
+    <header class="chatbot-header">
+      <div>
+        <p class="eyebrow">{chatbotUi.teaserEyebrow}</p>
+        <h2>{chatbotUi.panelTitle}</h2>
+        <p>{chatbotUi.panelIntro}</p>
+      </div>
+      <button class="chatbot-close" type="button" data-chat-close>
+        <span class="sr-only">Close assistant</span>
+        ×
+      </button>
+    </header>
+
+    <div class="chatbot-status" data-chat-status>
+      Ask about automation, custom SaaS, chatbots, voice agents, or project fit.
+    </div>
+
+    <div class="chatbot-messages" data-chat-messages>
+      <article class="chat-message is-assistant">
+        <p>{chatbotUi.welcomeMessage}</p>
+      </article>
+    </div>
+
+    <div class="chatbot-suggestions" data-chat-suggestions>
+      {
+        chatbotStarterPrompts.slice(0, 3).map((prompt) => (
+          <button class="prompt-chip" type="button" data-chat-prompt={prompt}>
+            {prompt}
+          </button>
+        ))
+      }
+    </div>
+
+    <form class="chatbot-input" data-chat-form>
+      <label class="sr-only" for="chatbot-message">Ask ApexArc AI a question</label>
+      <textarea
+        id="chatbot-message"
+        name="message"
+        placeholder={chatbotUi.inputPlaceholder}
+        rows="4"
+        data-chat-textarea
+      ></textarea>
+      <div class="chatbot-input-actions">
+        <button class="button button-primary chatbot-send" type="submit" data-chat-send>
+          {chatbotUi.sendLabel}
+        </button>
+      </div>
+    </form>
+
+    <section class="chatbot-lead-panel" data-chat-lead-panel hidden>
+      <div class="chatbot-lead-copy">
+        <h3>{chatbotUi.leadTitle}</h3>
+        <p>{chatbotUi.leadIntro}</p>
+      </div>
+
+      <form class="chatbot-lead-form" data-chat-lead-form>
+        <div class="field-grid">
+          <label class="field">
+            <span>Name</span>
+            <input type="text" name="name" autocomplete="name" required />
+          </label>
+          <label class="field">
+            <span>Email</span>
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+        </div>
+
+        <label class="field">
+          <span>Project summary</span>
+          <textarea
+            name="project_summary"
+            rows="4"
+            placeholder="Describe the workflow, system, or product idea you want help with."
+            required
+          ></textarea>
+        </label>
+
+        <div class="chatbot-lead-actions">
+          <button class="button button-primary" type="submit" data-chat-lead-submit>
+            Save Project Details
+          </button>
+          <button class="button button-ghost" type="button" data-chat-lead-cancel>
+            Cancel
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <section class="chatbot-success" data-chat-success hidden>
+      <h3>{chatbotUi.leadSuccessTitle}</h3>
+      <p>{chatbotUi.leadSuccessMessage}</p>
+      <div class="button-row">
+        <a class="button button-secondary" href={site.emailHref}>Email ApexArc</a>
+        <button class="button button-ghost" type="button" data-chat-open-lead>
+          Edit Details
+        </button>
+      </div>
+    </section>
+
+    <footer class="chatbot-footer">
+      <a class="chatbot-link" href={site.emailHref}>Prefer email instead?</a>
+      <button class="button button-ghost chatbot-lead-trigger" type="button" data-chat-open-lead>
+        {chatbotUi.leadTriggerLabel}
+      </button>
+    </footer>
+  </section>
+</div>
+
+<form
+  name={chatbotLeadFormName}
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  hidden
+>
+  <input type="hidden" name="form-name" value={chatbotLeadFormName} />
+  <input type="text" name="bot-field" />
+  <input type="text" name="name" />
+  <input type="email" name="email" />
+  <textarea name="project_summary"></textarea>
+  <textarea name="transcript_excerpt"></textarea>
+  <input type="text" name="qualification_summary" />
+  <input type="text" name="page_path" />
+  <input type="text" name="page_title" />
+  <input type="text" name="context" />
+</form>

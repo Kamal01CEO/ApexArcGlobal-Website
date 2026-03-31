@@ -12,12 +12,14 @@ The offer is centered around:
 - Chatbots, CRM automation, and voice agents
 
 The design direction is premium, dark, futuristic, and conversion-focused, with a Spline-based hero scene on the homepage.
+The homepage also includes a lead-gen AI chatbot that is designed to qualify visitors and capture project details.
 
 ## Stack
 
 - Astro
 - Custom HTML/CSS/JavaScript
 - Spline Viewer web component for the homepage 3D scene
+- Netlify Function for the chatbot backend
 - Netlify for hosting and deployment
 
 There is no React, no Three.js, and no React Three Fiber in the current implementation.
@@ -27,8 +29,12 @@ There is no React, no Three.js, and no React Three Fiber in the current implemen
 - `src/data/site.ts`: central content model for navigation, services, process, FAQs, and contact info
 - `src/layouts/MainLayout.astro`: shared layout, metadata, fonts, and Spline viewer script
 - `src/pages/index.astro`: homepage and Spline hero integration
+- `src/components/ChatbotDock.astro`: homepage chatbot UI and Netlify lead form markup
 - `src/styles/global.css`: full visual system, layout, and hero styling
 - `public/scripts/site.js`: lightweight interactions for navigation, reveal effects, and utility behavior
+- `netlify/functions/chat.mjs`: OpenAI-powered chatbot endpoint
+- `netlify/lib/chatbot-config.mjs`: chatbot system prompt, response schema, and qualification rules
+- `src/lib/chatbot-content.mjs`: client-facing chatbot prompts and public knowledge content
 - `netlify.toml`: Netlify build config
 
 ## Current Site Structure
@@ -47,6 +53,21 @@ The homepage hero uses this Spline scene:
 - `https://prod.spline.design/zWe6iJkNdAhpdlGn/scene.splinecode`
 
 The hero currently uses the official Spline web component and a branded visual mask near the bottom-right corner. If the Spline logo should be removed completely, the best fix is to disable the logo in Spline publish/export settings at the source.
+
+## Chatbot Notes
+
+The homepage chatbot is:
+
+- Homepage-only in v1
+- Focused on qualification and lead capture
+- Powered by an OpenAI call through a Netlify Function
+- Backed by a hidden Netlify Form for storing captured project details
+
+Required environment variable:
+
+- `OPENAI_API_KEY`
+
+If `OPENAI_API_KEY` is missing, the chatbot UI still renders but falls back to a friendly "assistant is being configured" message and pushes the visitor to email.
 
 ## Local Development
 
