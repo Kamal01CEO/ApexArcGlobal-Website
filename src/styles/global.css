@@ -526,7 +526,7 @@ summary:focus-visible {
 
 .hero-visual {
   position: relative;
-  padding-bottom: 8.5rem;
+  padding-bottom: 0;
 }
 
 .spline-stage {
@@ -619,13 +619,13 @@ summary:focus-visible {
 
 .chatbot-shell {
   position: absolute;
-  left: 1.35rem;
-  right: auto;
-  bottom: 0;
+  right: 1.25rem;
+  left: auto;
+  bottom: 1.25rem;
   z-index: 4;
-  width: min(26.5rem, calc(100% - 2.7rem));
-  max-width: 26.5rem;
-  transform: translateY(30%);
+  width: min(22.5rem, calc(100% - 2.5rem));
+  max-width: 22.5rem;
+  transform: none;
 }
 
 .chatbot-teaser,
@@ -641,6 +641,8 @@ summary:focus-visible {
 .chatbot-panel {
   display: grid;
   gap: 1rem;
+  max-height: min(31rem, calc(100vh - 10rem));
+  overflow: hidden;
   background:
     linear-gradient(180deg, rgba(9, 15, 24, 0.88), rgba(7, 12, 20, 0.8)),
     rgba(9, 15, 24, 0.86);
@@ -703,7 +705,8 @@ summary:focus-visible {
 .chatbot-messages {
   display: grid;
   gap: 0.75rem;
-  max-height: 15rem;
+  min-height: 0;
+  max-height: 11.5rem;
   overflow-y: auto;
   padding-right: 0.25rem;
 }
@@ -1288,9 +1291,10 @@ summary:focus-visible {
   }
 
   .chatbot-shell {
-    left: 1rem;
-    width: min(24rem, calc(100% - 2rem));
-    max-width: 24rem;
+    right: 1rem;
+    left: auto;
+    width: min(21rem, calc(100% - 2rem));
+    max-width: 21rem;
   }
 }
 
