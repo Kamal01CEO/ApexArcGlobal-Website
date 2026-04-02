@@ -159,12 +159,7 @@ document.querySelectorAll("[data-chatbot]").forEach((root) => {
   let isSubmitting = false;
 
   const updateLayoutState = () => {
-    if (!mobileQuery.matches) {
-      root.classList.add("is-open");
-      return;
-    }
-
-    if (!root.classList.contains("is-lead-capture")) {
+    if (mobileQuery.matches && !root.classList.contains("is-lead-capture")) {
       root.classList.remove("is-open");
     }
   };
@@ -228,6 +223,20 @@ document.querySelectorAll("[data-chatbot]").forEach((root) => {
   const openChat = () => {
     root.classList.add("is-open");
     textarea.focus();
+  };
+
+  const closeChat = () => {
+    if (leadPanel instanceof HTMLElement) {
+      leadPanel.hidden = true;
+    }
+
+    root.classList.remove("is-open", "is-lead-capture");
+
+    if (successPanel instanceof HTMLElement) {
+      successPanel.hidden = true;
+    }
+
+    setStatus("Ask another question or share project details when you are ready.");
   };
 
   const openLeadCapture = (prefillSummary = "") => {
@@ -376,7 +385,7 @@ document.querySelectorAll("[data-chatbot]").forEach((root) => {
   });
 
   closeButton?.addEventListener("click", () => {
-    closeLeadCapture();
+    closeChat();
   });
 
   suggestions.addEventListener("click", (event) => {

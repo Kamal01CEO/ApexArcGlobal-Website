@@ -9,14 +9,14 @@ export const chatbotStarterPrompts = [
 
 export const chatbotUi = {
   teaserEyebrow: "ApexArc AI",
-  teaserTitle: "Ask about automation, AI agents, or your product idea.",
+  teaserTitle: "Start with ApexArc AI",
   teaserIntro:
-    "Use the assistant to see if ApexArc is a fit, understand the service mix, and get to the right next step faster.",
+    "Quick fit check for automation, AI agents, and custom SaaS ideas.",
   panelTitle: "ApexArc Lead Assistant",
   panelIntro: "Built to qualify projects, answer fit questions, and help you take the next step.",
   welcomeMessage:
     "Tell me what you want to automate, build, or improve. I can help you figure out whether ApexArc is the right fit and when it makes sense to share project details.",
-  mobileOpenLabel: "Open AI Assistant",
+  mobileOpenLabel: "Open Assistant",
   inputPlaceholder: "Ask about agentic workflows, custom SaaS, chatbots, CRM automation, or voice agents...",
   sendLabel: "Send",
   leadTriggerLabel: "Share project details",
