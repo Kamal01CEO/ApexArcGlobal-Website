@@ -1,0 +1,33 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+type Props = {
+  post: CollectionEntry<"blog">;
+  compact?: boolean;
+};
+
+const { post, compact = false } = Astro.props;
+const publishDate = post.data.publishDate.toLocaleDateString("en-US", {
+  month: "short",
+  day: "numeric",
+  year: "numeric"
+});
+---
+
+<article class:list={["glass-card", "blog-card", { compact }]} data-reveal>
+  <div class="blog-card-meta">
+    <span>{post.data.category}</span>
+    <span>{publishDate}</span>
+    {post.data.readingTime && <span>{post.data.readingTime}</span>}
+  </div>
+  <h3>
+    <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+  </h3>
+  <p>{post.data.description}</p>
+  {post.data.tags.length > 0 && (
+    <div class="blog-tag-row">
+      {post.data.tags.map((tag) => <span>{tag}</span>)}
+    </div>
+  )}
+  <a class="blog-read-link" href={`/blog/${post.slug}/`}>Read article</a>
+</article>

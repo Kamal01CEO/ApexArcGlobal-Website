@@ -1,6 +1,6 @@
 import { chatbotPublicKnowledge, chatbotStarterPrompts } from "../../src/lib/chatbot-content.mjs";
 
-export const chatbotModel = "gpt-4o-mini";
+export const chatbotModel = "minimax/minimax-m2.5:free";
 
 const qualificationRules = [
   "A strong fit is a startup, founder-led business, or growing small team with operational drag, customer interaction bottlenecks, or a custom product need.",

@@ -1,0 +1,82 @@
+---
+import { getCollection, render } from "astro:content";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const publishDate = post.data.publishDate.toLocaleDateString("en-US", {
+  month: "long",
+  day: "numeric",
+  year: "numeric"
+});
+const updatedDate = post.data.updatedDate?.toLocaleDateString("en-US", {
+  month: "long",
+  day: "numeric",
+  year: "numeric"
+});
+---
+
+<MainLayout title={post.data.title} description={post.data.description}>
+  <section class="section page-hero blog-post-hero">
+    <div class="container blog-post-shell">
+      <div class="blog-post-intro" data-reveal>
+        <a class="blog-back-link" href="/blog/">← Back to blog</a>
+        <p class="eyebrow">{post.data.category}</p>
+        <h1>{post.data.title}</h1>
+        <p class="page-intro">{post.data.description}</p>
+        <div class="blog-post-meta">
+          <span>{publishDate}</span>
+          <span>By {post.data.author}{post.data.authorRole ? ` — ${post.data.authorRole}` : ""}</span>
+          {updatedDate && <span>Updated {updatedDate}</span>}
+          {post.data.readingTime && <span>{post.data.readingTime}</span>}
+        </div>
+        {post.data.tags.length > 0 && (
+          <div class="blog-tag-row">
+            {post.data.tags.map((tag) => <span>{tag}</span>)}
+          </div>
+        )}
+        {(post.data.problem || post.data.solution || post.data.proof || post.data.outcome) && (
+          <div class="blog-proof-grid">
+            {post.data.problem && (
+              <div class="blog-proof-card">
+                <span class="blog-proof-label">Problem</span>
+                <p>{post.data.problem}</p>
+              </div>
+            )}
+            {post.data.solution && (
+              <div class="blog-proof-card">
+                <span class="blog-proof-label">Solution</span>
+                <p>{post.data.solution}</p>
+              </div>
+            )}
+            {post.data.proof && (
+              <div class="blog-proof-card">
+                <span class="blog-proof-label">Proof</span>
+                <p>{post.data.proof}</p>
+              </div>
+            )}
+            {post.data.outcome && (
+              <div class="blog-proof-card">
+                <span class="blog-proof-label">Outcome</span>
+                <p>{post.data.outcome}</p>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+
+      <article class="glass-card blog-post-body">
+        <Content />
+      </article>
+    </div>
+  </section>
+</MainLayout>

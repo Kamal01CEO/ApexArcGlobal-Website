@@ -1,0 +1,61 @@
+---
+import { getCollection } from "astro:content";
+import BlogCard from "../../components/BlogCard.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+
+const featuredPost = posts.find((post) => post.data.featured) ?? posts[0];
+const remainingPosts = posts.filter((post) => post.id !== featuredPost?.id);
+---
+
+<MainLayout
+  title="Blog"
+  description="Insights from ApexArc Global on automation systems, AI agents, customer AI, and custom SaaS."
+>
+  <section class="section page-hero">
+    <div class="container page-hero-grid">
+      <div data-reveal>
+        <p class="eyebrow">ApexArc Blog</p>
+        <h1>Practical writing on automation, AI systems, and custom software.</h1>
+        <p class="page-intro">
+          This is the publishing layer the site was missing. New posts can now be added as Markdown files
+          under <code>src/content/blog</code> and they automatically appear here.
+        </p>
+      </div>
+      <div class="glass-card side-note" data-reveal>
+        <p class="mini-label">Publishing workflow</p>
+        <p>Write a new Markdown file, fill in the frontmatter, commit, and deploy. No CMS circus required.</p>
+      </div>
+    </div>
+  </section>
+
+  {featuredPost && (
+    <section class="section section-tight-top">
+      <div class="container">
+        <SectionHeading
+          eyebrow="Featured article"
+          title={featuredPost.data.title}
+          intro={featuredPost.data.description}
+        />
+        <BlogCard post={featuredPost} />
+      </div>
+    </section>
+  )}
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="All articles"
+        title="A simple blog system that is now part of the website."
+        intro="Each article has its own route, SEO metadata through the layout, and a reusable content collection schema."
+      />
+      <div class="blog-grid">
+        {remainingPosts.map((post) => <BlogCard post={post} compact />)}
+      </div>
+    </div>
+  </section>
+</MainLayout>

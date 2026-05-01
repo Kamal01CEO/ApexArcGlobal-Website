@@ -1,0 +1,253 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<MainLayout title="Vernacular AI Skilling Engine Architecture" description="AI-powered skill training for workers in native language via WhatsApp">
+  <style>
+    .arch-hero {
+      padding-top: 5.9rem;
+      padding-bottom: 2rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted-strong);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      transition: color var(--transition);
+    }
+
+    .back-link:hover {
+      color: var(--text);
+    }
+
+    .arch-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+    }
+
+    .arch-header h1 {
+      font-size: clamp(3rem, 6vw, 5rem);
+      margin-bottom: 1rem;
+    }
+
+    .arch-header .subtitle {
+      font-size: 1.1rem;
+      color: var(--muted-strong);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .tech-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+
+    .tech-badge {
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(114, 221, 255, 0.2);
+      background: rgba(114, 221, 255, 0.08);
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content-section {
+      padding: 3rem 0;
+    }
+
+    .content-section h2 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      margin-bottom: 1.5rem;
+    }
+
+    .content-section p {
+      color: var(--muted-strong);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      max-width: 800px;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+      margin: 2rem 0;
+    }
+
+    .detail-card {
+      padding: 1.5rem;
+      border-radius: 1.2rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .detail-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .detail-card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .stack-card {
+      padding: 1.5rem;
+      border-radius: 1.2rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.02);
+      transition: all var(--transition);
+    }
+
+    .stack-card:hover {
+      border-color: rgba(114, 221, 255, 0.3);
+      background: rgba(114, 221, 255, 0.05);
+      transform: translateY(-2px);
+    }
+
+    .stack-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .stack-card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    @media (max-width: 820px) {
+      .detail-grid,
+      .stack-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <section class="section arch-hero">
+    <div class="container">
+      <a href="/portfolio" class="back-link">← Back to Portfolio</a>
+      
+      <div class="arch-header">
+        <p class="eyebrow">Product Architecture</p>
+        <h1>Vernacular AI <span style="color: var(--accent);">Skilling Engine</span></h1>
+        <p class="subtitle">
+          AI-powered skill training for workers in native language — delivered via WhatsApp with automated enrollment, quizzes, progress tracking, and placement orientation.
+        </p>
+
+        <div class="tech-badges">
+          <span class="tech-badge">Claude API</span>
+          <span class="tech-badge">WhatsApp API</span>
+          <span class="tech-badge">n8n Automation</span>
+          <span class="tech-badge">SQLite</span>
+          <span class="tech-badge">Hindi & Punjabi</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+      <h2>Native language AI training built for real access</h2>
+      <p>
+        Workers in India face language barriers, low digital access, and weak training pipelines. This system delivers AI-driven skill training in Hindi and Punjabi through WhatsApp — with automated enrollment, progress tracking, and outcome orientation built in.
+      </p>
+
+      <div class="detail-grid">
+        <div class="detail-card">
+          <h3>Problem</h3>
+          <p>Quality skill training is inaccessible due to language barriers and weak delivery systems.</p>
+        </div>
+
+        <div class="detail-card">
+          <h3>Solution</h3>
+          <p>WhatsApp-first AI skilling in Hindi/Punjabi with automated assessment and tracking.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+      <h2>Tech Stack</h2>
+
+      <div class="stack-grid">
+        <div class="stack-card">
+          <h3>Claude API</h3>
+          <p>Native language lesson generation in Hindi and Punjabi. Creates contextual training content and quiz questions.</p>
+        </div>
+
+        <div class="stack-card">
+          <h3>WhatsApp API</h3>
+          <p>Primary delivery channel — no app needed. Workers receive lessons, quizzes, and updates directly on WhatsApp.</p>
+        </div>
+
+        <div class="stack-card">
+          <h3>n8n</h3>
+          <p>Automation workflows for enrollment, daily reminders, quiz logic, and progress notifications.</p>
+        </div>
+
+        <div class="stack-card">
+          <h3>SQLite</h3>
+          <p>Lightweight database for tracking user progress, quiz scores, and completion status.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+      <h2>System Architecture</h2>
+      <p>
+        The system is designed around accessibility and automation. Workers enroll via a simple WhatsApp message, receive daily lessons in their native language, complete quizzes to validate understanding, and get automated placement orientation upon completion.
+      </p>
+
+      <div class="detail-grid">
+        <div class="detail-card">
+          <h3>Enrollment Flow</h3>
+          <p>Workers send a keyword to WhatsApp number. System captures details, assigns course, and sends welcome message.</p>
+        </div>
+
+        <div class="detail-card">
+          <h3>Content Delivery</h3>
+          <p>Daily lessons sent via WhatsApp. AI generates content in Hindi/Punjabi based on skill level and progress.</p>
+        </div>
+
+        <div class="detail-card">
+          <h3>Assessment</h3>
+          <p>Quiz questions sent after each lesson. Responses tracked and scored automatically. Progress saved to database.</p>
+        </div>
+
+        <div class="detail-card">
+          <h3>Completion & Placement</h3>
+          <p>Upon course completion, workers receive placement orientation and job matching information.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 2rem; padding-bottom: 4rem;">
+    <div class="container" style="text-align: center;">
+      <p style="color: var(--muted); font-size: 0.9rem;">
+        <strong style="color: var(--text);">Vernacular AI Skilling Engine</strong><br>
+        Architecture Brief · Built with Claude API · WhatsApp · n8n · Apex Arc Global
+      </p>
+    </div>
+  </section>
+</MainLayout>

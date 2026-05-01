@@ -95,6 +95,42 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
 }
 
 document.querySelectorAll("[data-copy-email]").forEach((button) => {
+  const status = button.closest(".contact-card")?.querySelector("[data-copy-status]");
+  const originalText = button.textContent;
+  let resetTimer;
+
+  const setCopyState = (label, message) => {
+    button.textContent = label;
+
+    if (status) {
+      status.textContent = message;
+    }
+
+    window.clearTimeout(resetTimer);
+    resetTimer = window.setTimeout(() => {
+      button.textContent = originalText;
+
+      if (status) {
+        status.textContent = "";
+      }
+    }, 1600);
+  };
+
+  const fallbackCopy = (value) => {
+    const field = document.createElement("textarea");
+    field.value = value;
+    field.setAttribute("readonly", "true");
+    field.style.position = "absolute";
+    field.style.left = "-9999px";
+    document.body.appendChild(field);
+    field.select();
+    field.setSelectionRange(0, value.length);
+
+    const copied = document.execCommand("copy");
+    document.body.removeChild(field);
+    return copied;
+  };
+
   button.addEventListener("click", async () => {
     const email = button.getAttribute("data-copy-email");
 
@@ -103,15 +139,24 @@ document.querySelectorAll("[data-copy-email]").forEach((button) => {
     }
 
     try {
-      await navigator.clipboard.writeText(email);
-      const originalText = button.textContent;
-      button.textContent = "Email Copied";
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(email);
+      } else if (!fallbackCopy(email)) {
+        throw new Error("Clipboard API unavailable");
+      }
 
-      window.setTimeout(() => {
-        button.textContent = originalText;
-      }, 1600);
+      setCopyState("Email Copied", `${email} copied to clipboard.`);
     } catch (error) {
+      if (fallbackCopy(email)) {
+        setCopyState("Email Copied", `${email} copied to clipboard.`);
+        return;
+      }
+
       console.error("Could not copy email", error);
+
+      if (status) {
+        status.textContent = `Copy failed. Email ApexArc directly at ${email}.`;
+      }
     }
   });
 });

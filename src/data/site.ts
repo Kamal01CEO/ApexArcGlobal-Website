@@ -34,26 +34,27 @@ export const site = {
   email: "ceo@apexarcglobal.com",
   emailHref:
     "mailto:ceo@apexarcglobal.com?subject=Project%20Inquiry%20-%20ApexArc%20Global",
-  tagline: "Agentic automation, AI agents, and custom SaaS built for startup momentum.",
+  tagline: "Agentic automation, AI agents, and custom SaaS built for business momentum.",
   description:
-    "ApexArc Global helps startups automate operations, deploy customer-facing AI systems, and build custom SaaS products with product-minded execution.",
-  location: "Built for startup teams and growing small businesses worldwide."
+    "ApexArc Global helps businesses automate operations, deploy customer-facing AI systems, and build custom SaaS products with product-minded execution.",
+  location: "Built for businesses of all sizes worldwide."
 };
 
 export const navigation: NavItem[] = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
   { href: "/products", label: "Products" },
+  { href: "/blog", label: "Blog" },
   { href: "/process", label: "Process" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" }
 ];
 
 export const hero = {
-  eyebrow: "Automation Partner For Startups",
+  eyebrow: "Automation Partner For Growing Businesses",
   title: "Build the systems that move faster than your backlog.",
   intro:
-    "ApexArc Global helps startups automate operations, deploy AI agents, and launch custom SaaS products without the drag of bloated delivery cycles.",
+    "ApexArc Global helps businesses automate operations, deploy AI agents, and launch custom SaaS products without the drag of bloated delivery cycles.",
   primaryCta: {
     label: "Email ApexArc",
     href: site.emailHref
@@ -95,7 +96,7 @@ export const outcomes: Outcome[] = [
     intro:
       "When your team needs software that does not exist yet, we shape, prototype, and build it with the discipline of a product partner.",
     items: [
-      "Custom SaaS MVPs for startups and operator-led businesses",
+      "Custom SaaS MVPs for businesses and operator-led teams",
       "AI-first product features embedded into your workflow",
       "Internal platforms that become the operating system of your team"
     ]
@@ -139,7 +140,7 @@ export const serviceTracks: ServiceTrack[] = [
   {
     title: "Operations Automation",
     summary:
-      "For startups that have grown past manual coordination and need a more reliable operating rhythm.",
+      "For businesses that have grown past manual coordination and need a more reliable operating rhythm.",
     idealFor:
       "Teams juggling handoffs across sales, delivery, support, or back-office work.",
     deliverables: [
@@ -154,7 +155,7 @@ export const serviceTracks: ServiceTrack[] = [
     summary:
       "For teams that want smarter customer interaction without adding more manual response load.",
     idealFor:
-      "Businesses that need chat, intake, support, or phone coverage at startup speed.",
+      "Businesses that need chat, intake, support, or phone coverage at scale.",
     deliverables: [
       "Website chatbots and guided conversation flows",
       "Voice agents for common inbound paths",
@@ -246,7 +247,7 @@ export const productModes = [
   {
     title: "MVP Launches",
     description:
-      "For startup teams validating a new software concept with a focused first release."
+      "For teams validating a new software concept with a focused first release."
   },
   {
     title: "AI-First Products",
@@ -276,7 +277,7 @@ export const faqs: FaqItem[] = [
   {
     question: "Who is ApexArc Global best suited for?",
     answer:
-      "ApexArc Global is best suited for startups and fast-moving small businesses that need better systems, faster operations, or custom software without building a large in-house team first."
+      "ApexArc Global is best suited for businesses of all sizes — from local businesses to enterprises — that need better systems, faster operations, or custom software without building a large in-house team first."
   },
   {
     question: "Do you only build AI agents?",

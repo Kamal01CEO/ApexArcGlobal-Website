@@ -178,26 +178,6 @@ const normalizeHistory = (history) => {
     .slice(-8);
 };
 
-const extractOutputText = (responsePayload) => {
-  if (typeof responsePayload.output_text === "string" && responsePayload.output_text.trim()) {
-    return responsePayload.output_text;
-  }
-
-  for (const item of responsePayload.output ?? []) {
-    if (item.type !== "message") {
-      continue;
-    }
-
-    for (const content of item.content ?? []) {
-      if ((content.type === "output_text" || content.type === "text") && typeof content.text === "string") {
-        return content.text;
-      }
-    }
-  }
-
-  return "";
-};
-
 const normalizeAssistantPayload = (payload) => ({
   reply:
     typeof payload.reply === "string" && payload.reply.trim()
@@ -256,37 +236,37 @@ export const handler = async (event) => {
     });
   }
 
-  if (!process.env.OPENAI_API_KEY) {
+  if (!process.env.OPENROUTER_API_KEY) {
     return createJsonResponse(200, createFallbackPayload(message));
   }
 
-  const input = [
-    ...history.map((item) => ({
-      role: item.role,
-      content: [{ type: "input_text", text: item.content }]
-    })),
-    {
-      role: "user",
-      content: [{ type: "input_text", text: message }]
-    }
-  ];
-
   try {
-    const response = await fetch("https://api.openai.com/v1/responses", {
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-        "Content-Type": "application/json"
+        Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
+        "Content-Type": "application/json",
+        "HTTP-Referer": "https://apexarcglobal.com",
+        "X-Title": "ApexArc Global Chatbot"
       },
       body: JSON.stringify({
         model: chatbotModel,
-        instructions: chatbotSystemPrompt,
-        input,
+        messages: [
+          {
+            role: "system",
+            content: chatbotSystemPrompt
+          },
+          ...history,
+          {
+            role: "user",
+            content: message
+          }
+        ],
         temperature: 0.5,
-        max_output_tokens: 500,
-        text: {
-          format: {
-            type: "json_schema",
+        max_tokens: 500,
+        response_format: {
+          type: "json_schema",
+          json_schema: {
             name: "apexarc_chat_response",
             strict: true,
             schema: chatbotResponseSchema
@@ -297,13 +277,13 @@ export const handler = async (event) => {
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error("OpenAI chat request failed", response.status, errorText);
+      console.error("OpenRouter chat request failed", response.status, errorText);
 
       return createJsonResponse(200, createFallbackPayload(message));
     }
 
     const payload = await response.json();
-    const outputText = extractOutputText(payload);
+    const outputText = payload.choices?.[0]?.message?.content;
 
     if (!outputText) {
       throw new Error("Missing structured response text.");
