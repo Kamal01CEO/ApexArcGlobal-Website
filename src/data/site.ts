@@ -303,12 +303,14 @@ export const faqs: FaqItem[] = [
 
 export const aboutStory = {
   eyebrow: "About ApexArc Global",
-  title: "Built for teams that need sharper systems, not slower process.",
+  title: "A one-person company powered by an internal AI operating system.",
   intro:
-    "ApexArc Global exists to help ambitious businesses turn messy operations and unbuilt product ideas into systems that actually move work forward.",
+    "I'm Kamal Rai. I run ApexArc Global alone, but I'm not working alone. I built an internal AI operating system that handles half my workload autonomously.",
   body: [
-    "The focus is practical leverage: automate what slows the team down, build AI where it creates real advantage, and shape custom software around the way the business already works.",
-    "That means every engagement starts with workflow logic and business outcomes, not random feature lists. The goal is always the same: fewer bottlenecks, clearer systems, and better momentum."
+    "The company looks bigger than it is because the AI does real work. It finds clients through cold outreach, qualifies leads, sends follow-up emails, manages my calendar, tracks opportunities, and handles operations 24/7. I built it because I couldn't afford to hire a team, and I didn't want to stay small forever.",
+    "This isn't a generic chatbot. It's a multi-agent system with persistent memory, tool execution, and real workflow automation. I designed it for my own business first. It runs on a stack I engineered: Python backends, stateful agents, voice interfaces, CRM integrations, content pipelines. Now I build similar systems for clients.",
+    "Every client gets the same approach. I don't outsource to juniors. The AI handles the repetitive work, and I handle the strategy and custom builds. That means faster delivery, lower cost, and systems that actually match how your business operates.",
+    "If your business is drowning in manual follow-up, missing leads, or stuck with tools that don't fit your workflow, I can help. The first step is understanding what's broken, then building the system that fixes it."
   ]
 };
 
