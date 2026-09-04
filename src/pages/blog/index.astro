@@ -22,14 +22,10 @@ const remainingPosts = posts.filter((post) => post.id !== featuredPost?.id);
         <p class="eyebrow">ApexArc Blog</p>
         <h1>Practical writing on automation, AI systems, and custom software.</h1>
         <p class="page-intro">
-          This is the publishing layer the site was missing. New posts can now be added as Markdown files
-          under <code>src/content/blog</code> and they automatically appear here.
+          Real-world insights on building AI agents, automation systems, and custom SaaS that delivers ROI.
         </p>
       </div>
-      <div class="glass-card side-note" data-reveal>
-        <p class="mini-label">Publishing workflow</p>
-        <p>Write a new Markdown file, fill in the frontmatter, commit, and deploy. No CMS circus required.</p>
-      </div>
+    
     </div>
   </section>
 
@@ -50,8 +46,8 @@ const remainingPosts = posts.filter((post) => post.id !== featuredPost?.id);
     <div class="container">
       <SectionHeading
         eyebrow="All articles"
-        title="A simple blog system that is now part of the website."
-        intro="Each article has its own route, SEO metadata through the layout, and a reusable content collection schema."
+        title="Browse all posts"
+        intro="Deep dives on AI systems, automation strategy, and real implementations."
       />
       <div class="blog-grid">
         {remainingPosts.map((post) => <BlogCard post={post} compact />)}
